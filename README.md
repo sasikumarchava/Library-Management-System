@@ -1,8 +1,5 @@
 # Library-Management-System
 
-
-# Library Management System
-
 This is a simple Library Management System built using a microservices architecture with Java Spring Boot, React, MySQL, and Docker.
 
 ## Features
