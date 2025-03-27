@@ -1,0 +1,8 @@
+@ControllerAdvice
+class GlobalExceptionHandler {
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseBody
+    public Map<String, String> handleException(RuntimeException ex) {
+        return Collections.singletonMap("error", ex.getMessage());
+    }
+}

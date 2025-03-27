@@ -1,0 +1,42 @@
+@RestController
+@RequestMapping("/api/books")
+class LibraryController {
+    private final LibraryService libraryService;
+
+    public LibraryController(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
+
+    @GetMapping
+    public List<Book> viewAllBooks() {
+        return libraryService.getAllBooks();
+    }
+
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable Long id) {
+        return libraryService.getBookById(id);
+    }
+
+    @PostMapping
+    public String addBook(@RequestBody @Valid Book book) {
+        libraryService.addBook(book);
+        return "Book added successfully";
+    }
+
+    @PutMapping("/{id}")
+    public String updateBook(@PathVariable Long id, @RequestBody @Valid Book book) {
+        libraryService.updateBook(id, book);
+        return "Book updated successfully";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        libraryService.deleteBook(id);
+        return "Book deleted successfully";
+    }
+
+    @GetMapping("/search")
+    public List<Book> searchBooks(@RequestParam String query) {
+        return libraryService.searchBooks(query);
+    }
+}
